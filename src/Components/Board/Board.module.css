@@ -1,0 +1,61 @@
+.board{
+    display: flex;
+    flex-direction: column;
+    background-color: #282c34;
+    max-width: 900px;
+    border: none;
+    margin:50px auto;
+    color: white;
+}
+
+.firstColumn{
+    /*width: 200px;*/
+    /*height: 30px;*/
+    width: 202px;
+    text-align: center;
+    border-collapse: separate; /*убираем пустые промежутки между ячейками*/
+    border: 1px solid grey;
+}
+.secondColumn{
+    width: 48px;
+    text-align: center;
+    height: 28px;
+    border-collapse: separate; /*убираем пустые промежутки между ячейками*/
+    border: 1px solid grey;
+}
+.assignee{
+    max-width: 200px;
+    width: 200px;
+    height: 180px;
+}
+
+table tr th{
+    border-collapse: separate; /*убираем пустые промежутки между ячейками*/
+    border: 1px solid grey;
+    word-break: break-word;
+}
+table tr td{
+    border-collapse: separate; /*убираем пустые промежутки между ячейками*/
+    border: 1px solid grey;
+    word-wrap:break-word;
+    height: 180px;
+}
+.imgWrapper{
+    height: 40px;
+}
+.arrowImgWrapper{
+    height: 20px;
+    width: 20px;
+    margin-right: 4px;
+}
+th{
+    max-width: 100px;
+}
+.typesWrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.boardElementWrapper {
+    text-align: center;
+}
