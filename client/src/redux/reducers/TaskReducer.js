@@ -32,8 +32,8 @@ export const getTaskAC = task => {
 
 export const getTaskTC = () => async dispatch => {
     try{
-        const response = await axios.get("http:localhost:5000/api/tasks/")
-        dispatch(getTaskAC(response.data.total));
+        const response = await axios.get("http://localhost:5000/api/tasks/")
+        dispatch(getTaskAC(response.data));
         console.log(response.data);
     } catch (e){
         console.log(e)
