@@ -1,12 +1,16 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getTaskTC} from "../../redux/reducers/TaskReducer";
+import {getSortedTasksAC, getSortedTasksTC, getTaskTC} from "../../redux/reducers/TaskReducer";
 import classes from "./MainPage.module.css";
-import Board from "../Board/Board";
+import DefaultBoard from "../Board/DefaultBoard";
+import TypeBoard from "../Board/TypeBoard";
+import StatusBoard from "../Board/StatusBoard";
+import SwitchTables from "../Board/SwitchTables";
 
 const MainPage = props => {
+    const dispatch = useDispatch();
     const [tasks, setTasks] = useState();
-    const [currentFilter, setCurrentFilter] = useState("default");
+    const [currentFilter, setCurrentFilter] = useState("DEFAULT");
 
     const taskState = useSelector(state => {
         if (!state.task?.tasks) return null;
@@ -64,12 +68,67 @@ const MainPage = props => {
 
                 default: status = 'done';
             }
-            res[name][issueType].push({...task, status });
+            res[name][issueType].push({...task, status});
         });
         console.log(res);
+        return res;
     });
 
-    const dispatch = useDispatch();
+    const sortStateByTypeAndStatus = (user,type,status) => {
+        let totalCount = 0;
+
+       if (taskState !== null && typeof taskState[user] !== undefined){
+           console.log(taskState[user])
+            if(typeof taskState[user][type] !== "undefined"){
+                console.log(taskState[user][type])
+                taskState[user][type].forEach(item => {
+                    if(item.status === status){
+                        totalCount = totalCount + 1;
+                    }
+                })
+            }
+       }
+       console.log("countsdsfsdf",totalCount);
+       return totalCount
+    }
+
+    const sortStateByType = (user,type) => {
+        let totalCount = 0;
+
+        if (taskState !== null && typeof taskState[user] !== undefined){
+            console.log(taskState[user])
+            if(typeof taskState[user][type] !== "undefined"){
+                console.log(taskState[user][type])
+                totalCount = taskState[user][type].length
+            }
+        }
+        console.log("countsdsfsdf",totalCount);
+        return totalCount
+    }
+
+    const sortStateByStatus = (user,status) => {
+        let totalCount = 0;
+
+        if (taskState !== null && typeof taskState[user] !== undefined){
+            console.log(taskState[user])
+            taskState[user]["bug"].forEach(item => {
+                    if(item.status === status){
+                       totalCount += 1;
+                    }
+            })
+            taskState[user]["story"].forEach(item => {
+                if(item.status === status){
+                    totalCount += 1;
+                }
+            })
+            taskState[user]["epic"].forEach(item => {
+                if(item.status === status){
+                    totalCount += 1;
+                }
+            })
+        }
+        return totalCount;
+    }
 
     const selectorChangeHandler = (event) => {
         console.log("Filter is changed on:",event.target.value);
@@ -87,14 +146,16 @@ const MainPage = props => {
                 </div>
                 <div className={classes.selectorContainer}>
                     <select className={classes.selector} onChange={selectorChangeHandler}>
-                        <option value="default">Default Filter</option>
-                        <option value="byType">Filter by issue's type</option>
-                        <option value="byPriority">Filter by priority</option>
+                        <option value="DEFAULT">Default Filter</option>
+                        <option value="BY_TYPES">Filter by issue's type</option>
+                        <option value="BY_STATUS">Filter by status</option>
                     </select>
                 </div>
-                <Board filter={currentFilter}/>
-                I am MainPage that's OK)))
-                {/*<div>{taskState}</div>*/}
+                <SwitchTables
+                    filter={currentFilter}
+                    sortDefaultFunction={sortStateByTypeAndStatus}
+                    sortByTypesFunction={sortStateByType}
+                    sortStateByStatus={sortStateByStatus}/>
             </div>
         </div>
     )

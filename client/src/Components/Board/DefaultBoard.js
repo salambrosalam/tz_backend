@@ -10,7 +10,7 @@ import yellowArrowIcon from "../../Assets/yellow_arrow.png";
 import lightgreenArrowIcon from "../../Assets/lightgreen_arrow.png";
 import greenArrowIcon from "../../Assets/green_arrow.png";
 
-const Board = (props) => {
+const DefaultBoard = (props) => {
     return (
         <div className={classes.board}>
             <table>
@@ -64,10 +64,30 @@ const Board = (props) => {
                             <img className={classes.imgWrapper} src={epicIcon}/>
                         </td>
                     </tr>
-                    <td ><BoardElement className={classes.boardElementWrapper}/></td>
-                    <td className={classes.boardElementWrapper}><BoardElement/></td>
-                    <td className={classes.boardElementWrapper}><BoardElement/></td>
-                    <td className={classes.boardElementWrapper}><BoardElement/></td>
+                    <td ><BoardElement className={classes.boardElementWrapper}
+                            BackLogBug={props.sortDefaultFunction("_PiXeL_ TV","bug","backlog")}
+                            BackLogStory={props.sortDefaultFunction("_PiXeL_ TV","story","backlog")}
+                            BackLogEpic={props.sortDefaultFunction("_PiXeL_ TV","epic","backlog")}
+                            filterType={props.filter}
+                    /></td>
+                    <td className={classes.boardElementWrapper}><BoardElement
+                        BackLogBug={props.sortDefaultFunction("_PiXeL_ TV","bug","done")}
+                        BackLogStory={props.sortDefaultFunction("_PiXeL_ TV","story","done")}
+                        BackLogEpic={props.sortDefaultFunction("_PiXeL_ TV","epic","done")}
+                        filterType={props.filter}
+                    /></td>
+                    <td className={classes.boardElementWrapper}><BoardElement
+                        BackLogBug={props.sortDefaultFunction("_PiXeL_ TV","bug","inProgress")}
+                        BackLogStory={props.sortDefaultFunction("_PiXeL_ TV","story","inProgress")}
+                        BackLogEpic={props.sortDefaultFunction("_PiXeL_ TV","epic","inProgress")}
+                        filterType={props.filter}
+                    /></td>
+                    <td className={classes.boardElementWrapper}><BoardElement
+                        BackLogBug={props.sortDefaultFunction("_PiXeL_ TV","bug","selected")}
+                        BackLogStory={props.sortDefaultFunction("_PiXeL_ TV","story","selected")}
+                        BackLogEpic={props.sortDefaultFunction("_PiXeL_ TV","epic","selected")}
+                        filterType={props.filter}
+                    /></td>
                 </tr>
                 <tr>
                     <tr>
@@ -78,14 +98,34 @@ const Board = (props) => {
                             <img className={classes.imgWrapper} src={epicIcon}/>
                         </td>
                     </tr>
-                    <td><BoardElement/></td>
-                    <td><BoardElement/></td>
-                    <td><BoardElement/></td>
-                    <td><BoardElement/></td>
+                    <td ><BoardElement className={classes.boardElementWrapper}
+                                       BackLogBug={props.sortDefaultFunction("Serg Bro","bug","backlog")}
+                                       BackLogStory={props.sortDefaultFunction("Serg Bro","story","backlog")}
+                                       BackLogEpic={props.sortDefaultFunction("Serg Bro","epic","backlog")}
+                                       filterType={props.filter}
+                    /></td>
+                    <td className={classes.boardElementWrapper}><BoardElement
+                        BackLogBug={props.sortDefaultFunction("Serg Bro","bug","done")}
+                        BackLogStory={props.sortDefaultFunction("Serg Bro","story","done")}
+                        BackLogEpic={props.sortDefaultFunction("Serg Bro","epic","done")}
+                        filterType={props.filter}
+                    /></td>
+                    <td className={classes.boardElementWrapper}><BoardElement
+                        BackLogBug={props.sortDefaultFunction("Serg Bro","bug","inProgress")}
+                        BackLogStory={props.sortDefaultFunction("Serg Bro","story","inProgress")}
+                        BackLogEpic={props.sortDefaultFunction("Serg Bro","epic","inProgress")}
+                        filterType={props.filter}
+                    /></td>
+                    <td className={classes.boardElementWrapper}><BoardElement
+                        BackLogBug={props.sortDefaultFunction("Serg Bro","bug","selected")}
+                        BackLogStory={props.sortDefaultFunction("Serg Bro","story","selected")}
+                        BackLogEpic={props.sortDefaultFunction("Serg Bro","epic","selected")}
+                        filterType={props.filter}
+                    /></td>
                 </tr>
             </table>
         </div>
     )
 }
 
-export default Board;
+export default DefaultBoard;

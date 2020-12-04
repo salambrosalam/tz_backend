@@ -58,4 +58,6 @@ th{
 }
 .boardElementWrapper {
     text-align: center;
+    align-items: center;
 }
+
