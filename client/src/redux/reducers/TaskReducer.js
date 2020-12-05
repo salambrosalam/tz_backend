@@ -57,3 +57,12 @@ export const getTaskTC = () => async dispatch => {
 export const getSortedTasksTC = (tasks) => dispatch => {
     dispatch(getSortedTasksAC(tasks));
 }
+
+export const changeStatusTC = () => async dispatch => {
+    try{
+        const response = await axios.get("http://localhost:5000/api/database/")
+        console.log("status_sended_on_server")
+    }catch(e){
+        console.log(e)
+    }
+}

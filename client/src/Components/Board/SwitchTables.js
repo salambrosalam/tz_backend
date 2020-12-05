@@ -6,11 +6,24 @@ import StatusBoard from "./StatusBoard";
 const SwitchTables = (props) => {
     switch(props.filter){
         case "DEFAULT":
-            return <DefaultBoard filter={props.filter} sortDefaultFunction={props.sortDefaultFunction}/>
+            return <DefaultBoard
+                user={props.user}
+                filter={props.filter}
+                sortDefaultFunction={props.sortDefaultFunction}
+                type={props.type}
+                status={props.status}/>
         case "BY_TYPES":
-           return <TypeBoard filter="DEFAULT" sortByTypesFunction={props.sortByTypesFunction}/>
+           return <TypeBoard
+               filter="DEFAULT"
+               sortByTypesFunction={props.sortByTypesFunction}
+               type={props.type}
+               user={props.user}/>
         case "BY_STATUS":
-            return <StatusBoard filter={props.filter} sortStateByStatus={props.sortStateByStatus} />
+            return <StatusBoard
+                filter={props.filter}
+                sortStateByStatus={props.sortStateByStatus}
+                user={props.user}
+                status={props.status}/>
     }
 }
 

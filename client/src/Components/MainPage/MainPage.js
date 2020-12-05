@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {getSortedTasksAC, getSortedTasksTC, getTaskTC} from "../../redux/reducers/TaskReducer";
+import {changeStatusTC, getSortedTasksAC, getSortedTasksTC, getTaskTC} from "../../redux/reducers/TaskReducer";
 import classes from "./MainPage.module.css";
 import DefaultBoard from "../Board/DefaultBoard";
 import TypeBoard from "../Board/TypeBoard";
@@ -11,6 +11,9 @@ const MainPage = props => {
     const dispatch = useDispatch();
     const [tasks, setTasks] = useState();
     const [currentFilter, setCurrentFilter] = useState("DEFAULT");
+    const [user,setUser] = useState("");
+    const [type,setType] = useState("");
+    const [status,setStatus] = useState("");
 
     const taskState = useSelector(state => {
         if (!state.task?.tasks) return null;
@@ -77,6 +80,10 @@ const MainPage = props => {
     const sortStateByTypeAndStatus = (user,type,status) => {
         let totalCount = 0;
 
+        setUser(user);
+        setType(type);
+        setStatus(status);
+
        if (taskState !== null && typeof taskState[user] !== undefined){
            console.log(taskState[user])
             if(typeof taskState[user][type] !== "undefined"){
@@ -95,6 +102,9 @@ const MainPage = props => {
     const sortStateByType = (user,type) => {
         let totalCount = 0;
 
+        setUser(user);
+        setType(type);
+
         if (taskState !== null && typeof taskState[user] !== undefined){
             console.log(taskState[user])
             if(typeof taskState[user][type] !== "undefined"){
@@ -108,6 +118,9 @@ const MainPage = props => {
 
     const sortStateByStatus = (user,status) => {
         let totalCount = 0;
+
+        setUser(user);
+        setStatus(status);
 
         if (taskState !== null && typeof taskState[user] !== undefined){
             console.log(taskState[user])
@@ -133,6 +146,7 @@ const MainPage = props => {
     const selectorChangeHandler = (event) => {
         console.log("Filter is changed on:",event.target.value);
         setCurrentFilter(event.target.value);
+        dispatch(changeStatusTC());
     }
 
     useEffect( () => {
@@ -155,7 +169,10 @@ const MainPage = props => {
                     filter={currentFilter}
                     sortDefaultFunction={sortStateByTypeAndStatus}
                     sortByTypesFunction={sortStateByType}
-                    sortStateByStatus={sortStateByStatus}/>
+                    sortStateByStatus={sortStateByStatus}
+                    user={user}
+                    type={type}
+                    status={status}/>
             </div>
         </div>
     )
