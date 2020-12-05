@@ -4,11 +4,7 @@ import BoardElement from "../BoardElement/BoardElement";
 import bugIcon from "../../Assets/bug.png";
 import storyIcon from "../../Assets/story.jpg";
 import epicIcon from "../../Assets/epic.png";
-import redArrowIcon from "../../Assets/red_arrow.png";
-import orangeArrowIcon from "../../Assets/orange_arrow.png";
-import yellowArrowIcon from "../../Assets/yellow_arrow.png";
-import lightgreenArrowIcon from "../../Assets/lightgreen_arrow.png";
-import greenArrowIcon from "../../Assets/green_arrow.png";
+
 
 const TypeBoard = (props) => {
     return (

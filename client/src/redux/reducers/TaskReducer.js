@@ -1,5 +1,4 @@
 import axios from "axios";
-import {taskAPI} from "../../api/api";
 
 const GET_ALL_TASKS = "GET_ALL_TASKS";
 const GET_SORTED_TASKS = "GET_SORTED_TASKS";
@@ -48,7 +47,6 @@ export const getTaskTC = () => async dispatch => {
     try{
         const response = await axios.get("http://localhost:5000/api/tasks/")
         dispatch(getTaskAC(response.data));
-        console.log(response.data);
     } catch (e){
         console.log(e)
     }
@@ -61,7 +59,6 @@ export const getSortedTasksTC = (tasks) => dispatch => {
 export const changeStatusTC = () => async dispatch => {
     try{
         const response = await axios.get("http://localhost:5000/api/database/")
-        console.log("status_sended_on_server")
     }catch(e){
         console.log(e)
     }

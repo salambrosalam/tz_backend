@@ -1,15 +1,11 @@
 import React, {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {changeStatusTC, getSortedTasksAC, getSortedTasksTC, getTaskTC} from "../../redux/reducers/TaskReducer";
+import {changeStatusTC, getTaskTC} from "../../redux/reducers/TaskReducer";
 import classes from "./MainPage.module.css";
-import DefaultBoard from "../Board/DefaultBoard";
-import TypeBoard from "../Board/TypeBoard";
-import StatusBoard from "../Board/StatusBoard";
 import SwitchTables from "../Board/SwitchTables";
 
 const MainPage = props => {
     const dispatch = useDispatch();
-    const [tasks, setTasks] = useState();
     const [currentFilter, setCurrentFilter] = useState("DEFAULT");
     const [user,setUser] = useState("");
     const [type,setType] = useState("");
@@ -73,7 +69,6 @@ const MainPage = props => {
             }
             res[name][issueType].push({...task, status});
         });
-        console.log(res);
         return res;
     });
 
@@ -85,9 +80,7 @@ const MainPage = props => {
         setStatus(status);
 
        if (taskState !== null && typeof taskState[user] !== undefined){
-           console.log(taskState[user])
             if(typeof taskState[user][type] !== "undefined"){
-                console.log(taskState[user][type])
                 taskState[user][type].forEach(item => {
                     if(item.status === status){
                         totalCount = totalCount + 1;
@@ -95,7 +88,6 @@ const MainPage = props => {
                 })
             }
        }
-       console.log("countsdsfsdf",totalCount);
        return totalCount
     }
 
@@ -106,13 +98,10 @@ const MainPage = props => {
         setType(type);
 
         if (taskState !== null && typeof taskState[user] !== undefined){
-            console.log(taskState[user])
             if(typeof taskState[user][type] !== "undefined"){
-                console.log(taskState[user][type])
                 totalCount = taskState[user][type].length
             }
         }
-        console.log("countsdsfsdf",totalCount);
         return totalCount
     }
 
@@ -123,7 +112,6 @@ const MainPage = props => {
         setStatus(status);
 
         if (taskState !== null && typeof taskState[user] !== undefined){
-            console.log(taskState[user])
             taskState[user]["bug"].forEach(item => {
                     if(item.status === status){
                        totalCount += 1;
@@ -144,7 +132,6 @@ const MainPage = props => {
     }
 
     const selectorChangeHandler = (event) => {
-        console.log("Filter is changed on:",event.target.value);
         setCurrentFilter(event.target.value);
         dispatch(changeStatusTC());
     }
