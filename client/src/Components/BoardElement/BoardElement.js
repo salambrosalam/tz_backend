@@ -34,7 +34,9 @@ const BoardElement = (props) => {
             return(
                 <table>
                     <tr>
+                        <a href="https://salambrosalam.atlassian.net/issues/?jql=project=SALAM">
                         <td className={classes.square}>{props.BackLogBug}</td>
+                        </a>
                     </tr>
                 </table>
 

@@ -134,6 +134,7 @@ const MainPage = props => {
     const selectorChangeHandler = (event) => {
         setCurrentFilter(event.target.value);
         dispatch(changeStatusTC());
+        console.log(event);
     }
 
     useEffect( () => {
