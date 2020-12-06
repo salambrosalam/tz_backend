@@ -1,7 +1,9 @@
 const express = require("express")
 const config =require("config")
 const app = express()
+const fs = require("fs")
 const cors = require("cors")
+const https = require("https")
 
 app.use(cors());
 
@@ -14,5 +16,14 @@ app.use("/api/database",require("./routes/db.routes"));
 
 const PORT =config.get("PORT") || 5000
 
+const httpsOptions = {
+    cert: fs.readFileSync( "cert.pem"),
+    key: fs.readFileSync("key.pem")
+}
 
-app.listen(PORT,() => console.log(`App has been started on PORT: ${PORT}...`))
+https.createServer(httpsOptions, app)
+    .listen(PORT, () => {
+        console.log(`Listening on port ${PORT}...`)
+    })
+
+// app.listen(PORT,() => console.log(`App has been started on PORT: ${PORT}...`))
