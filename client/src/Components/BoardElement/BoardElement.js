@@ -11,7 +11,7 @@ const BoardElement = (props) => {
                     className={classes.square}
                 >
                     <a href="https://salambrosalam.atlassian.net/issues/?jql=project=SALAM">
-                        {value.totalCount}
+                        {value.length}
                     </a>
                 </td>
             )
@@ -29,6 +29,22 @@ const BoardElement = (props) => {
             value.forEach(item => {
                 priority[item?.fields?.priority?.name?.toLowerCase()].push(item);
             })
+        }
+
+
+
+        if (props.filterType === 'BY_PRIORITY') {
+            return Object.values(priority).map((item, i) => (
+                <td
+                    className={classes.square}
+                    key={i}
+                >
+                    <a href="https://salambrosalam.atlassian.net/issues/?jql=project=SALAM">
+                        {console.log(item)}
+                        {item.length}
+                    </a>
+                </td>
+            ))
         }
 
         return Object.values(priority).map((item, i) => (
@@ -87,7 +103,7 @@ const BoardElement = (props) => {
                 <table>
                     <tr>
                         <a href="https://salambrosalam.atlassian.net/issues/?jql=project=SALAM">
-                        <td className={classes.square}>{props.BackLogBug}</td>
+                            <td className={classes.square}>{props.BackLogBug.total.length}</td>
                         </a>
                     </tr>
                 </table>
