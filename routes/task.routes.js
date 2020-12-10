@@ -22,7 +22,7 @@ router.get("/",async (req,res) => {
                );
                return response.json();
            })
-           .then(text => {console.log("hui",text)
+           .then(text => {
            res.json(text)})
            .catch(err => console.error(err));
     }catch(e){

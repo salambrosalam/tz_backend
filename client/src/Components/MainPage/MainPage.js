@@ -74,6 +74,7 @@ const MainPage = props => {
 
     const sortStateByTypeAndStatus = (user,type,status) => {
         let totalCount = 0;
+        let total = [];
 
         setUser(user);
         setType(type);
@@ -84,15 +85,17 @@ const MainPage = props => {
                 taskState[user][type].forEach(item => {
                     if(item.status === status){
                         totalCount = totalCount + 1;
+                        total.push(item);
                     }
                 })
             }
        }
-       return totalCount
+       return {totalCount, total}
     }
 
     const sortStateByType = (user,type) => {
         let totalCount = 0;
+        let total = [];
 
         setUser(user);
         setType(type);
@@ -100,13 +103,15 @@ const MainPage = props => {
         if (taskState !== null && typeof taskState[user] !== undefined){
             if(typeof taskState[user][type] !== "undefined"){
                 totalCount = taskState[user][type].length
+                total = taskState[user][type];
             }
         }
-        return totalCount
+        return {totalCount, total}
     }
 
     const sortStateByStatus = (user,status) => {
         let totalCount = 0;
+        let total = [];
 
         setUser(user);
         setStatus(status);
@@ -115,20 +120,23 @@ const MainPage = props => {
             taskState[user]["bug"].forEach(item => {
                     if(item.status === status){
                        totalCount += 1;
+                       total.push(item);
                     }
             })
             taskState[user]["story"].forEach(item => {
                 if(item.status === status){
                     totalCount += 1;
+                    total.push(item);
                 }
             })
             taskState[user]["epic"].forEach(item => {
                 if(item.status === status){
                     totalCount += 1;
+                    total.push(item);
                 }
             })
         }
-        return totalCount;
+        return {totalCount, total};
     }
 
     const selectorChangeHandler = (event) => {
@@ -150,6 +158,7 @@ const MainPage = props => {
                     <select className={classes.selector} onChange={selectorChangeHandler}>
                         <option value="DEFAULT">Default Filter</option>
                         <option value="BY_TYPES">Filter by issue's type</option>
+                        <option value="BY_PRIORITY">Filter by priority</option>
                         <option value="BY_STATUS">Filter by status</option>
                     </select>
                 </div>
@@ -160,7 +169,9 @@ const MainPage = props => {
                     sortStateByStatus={sortStateByStatus}
                     user={user}
                     type={type}
-                    status={status}/>
+                    status={status}
+
+                />
             </div>
         </div>
     )

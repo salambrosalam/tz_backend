@@ -11,10 +11,11 @@ const SwitchTables = (props) => {
                 filter={props.filter}
                 sortDefaultFunction={props.sortDefaultFunction}
                 type={props.type}
-                status={props.status}/>
+                status={props.status}
+            />
         case "BY_TYPES":
            return <TypeBoard
-               filter="DEFAULT"
+               filter={props.filter}
                sortByTypesFunction={props.sortByTypesFunction}
                type={props.type}
                user={props.user}/>
@@ -24,6 +25,14 @@ const SwitchTables = (props) => {
                 sortStateByStatus={props.sortStateByStatus}
                 user={props.user}
                 status={props.status}/>
+        default:
+            return <DefaultBoard
+            user={props.user}
+            filter={props.filter}
+            sortDefaultFunction={props.sortDefaultFunction}
+            type={props.type}
+            status={props.status}
+        />
     }
 }
 
