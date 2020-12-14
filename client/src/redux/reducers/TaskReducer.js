@@ -2,6 +2,7 @@ import axios from "axios";
 
 const GET_ALL_TASKS = "GET_ALL_TASKS";
 const GET_SORTED_TASKS = "GET_SORTED_TASKS";
+const TOGGLE_FETCHING = "TOGGLE_FETCHING";
 
 const initialState = {
     tasks: null,
@@ -24,6 +25,11 @@ export const TaskReducer =(state = initialState, action) => {
                 ...state,
                 sortedTasks: action.payload
             }
+        case TOGGLE_FETCHING:
+            return{
+                ...state,
+                isFetching: action.payload
+            }
         default:
             return state
     }
@@ -42,14 +48,22 @@ export const getSortedTasksAC = tasks => {
         payload: tasks
     }
 }
+export const toggleFetchingAC = fetching => {
+    return {
+        type: TOGGLE_FETCHING,
+        payload: fetching
+    }
+}
 
 export const getTaskTC = () => async dispatch => {
     try{
-        const response = await axios.get("https://18.216.100.81:5000/api/tasks/")
+        dispatch(toggleFetchingAC(true))
+        const response = await axios.get("http://18.216.100.81/api/tasks/")
         dispatch(getTaskAC(response.data));
     } catch (e){
         console.log(e)
     }
+    dispatch(toggleFetchingAC(false))
 }
 
 export const getSortedTasksTC = (tasks) => dispatch => {
@@ -58,7 +72,7 @@ export const getSortedTasksTC = (tasks) => dispatch => {
 
 export const changeStatusTC = () => async dispatch => {
     try{
-        const response = await axios.get("https://18.216.100.81:5000/api/database/")
+        const response = await axios.get("http://18.216.100.81/api/database/")
     }catch(e){
         console.log(e)
     }

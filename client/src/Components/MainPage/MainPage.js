@@ -3,9 +3,11 @@ import {useDispatch, useSelector} from "react-redux";
 import {changeStatusTC, getTaskTC} from "../../redux/reducers/TaskReducer";
 import classes from "./MainPage.module.css";
 import SwitchTables from "../Board/SwitchTables";
+import Loader from "../Loader/Loader";
 
 const MainPage = props => {
     const dispatch = useDispatch();
+    const isFetching = useSelector(state => state.task.isFetching)
     const [currentFilter, setCurrentFilter] = useState("DEFAULT");
     const [user,setUser] = useState("");
     const [type,setType] = useState("");
@@ -74,6 +76,7 @@ const MainPage = props => {
 
     const sortStateByTypeAndStatus = (user,type,status) => {
         let totalCount = 0;
+        let total = [];
 
         setUser(user);
         setType(type);
@@ -84,15 +87,17 @@ const MainPage = props => {
                 taskState[user][type].forEach(item => {
                     if(item.status === status){
                         totalCount = totalCount + 1;
+                        total.push(item);
                     }
                 })
             }
        }
-       return totalCount
+       return {totalCount, total}
     }
 
     const sortStateByType = (user,type) => {
         let totalCount = 0;
+        let total = [];
 
         setUser(user);
         setType(type);
@@ -100,13 +105,15 @@ const MainPage = props => {
         if (taskState !== null && typeof taskState[user] !== undefined){
             if(typeof taskState[user][type] !== "undefined"){
                 totalCount = taskState[user][type].length
+                total = taskState[user][type];
             }
         }
-        return totalCount
+        return {totalCount, total}
     }
 
     const sortStateByStatus = (user,status) => {
         let totalCount = 0;
+        let total = [];
 
         setUser(user);
         setStatus(status);
@@ -115,54 +122,62 @@ const MainPage = props => {
             taskState[user]["bug"].forEach(item => {
                     if(item.status === status){
                        totalCount += 1;
+                       total.push(item);
                     }
             })
             taskState[user]["story"].forEach(item => {
                 if(item.status === status){
                     totalCount += 1;
+                    total.push(item);
                 }
             })
             taskState[user]["epic"].forEach(item => {
                 if(item.status === status){
                     totalCount += 1;
+                    total.push(item);
                 }
             })
         }
-        return totalCount;
+        return {totalCount, total};
     }
 
     const selectorChangeHandler = (event) => {
         setCurrentFilter(event.target.value);
         dispatch(changeStatusTC());
-        console.log(event);
     }
 
     useEffect( () => {
         dispatch(getTaskTC());
     },[])
+
+    if(isFetching){
+        return <Loader/>
+    }
     return (
-        <div className={classes.basic}>
-            <div>
-                <div className={classes.title}>
-                    <div className={classes.titleText}>Table of tasks from "SALAM" dashboard</div>
+                <div className={classes.basic}>
+                    <div>
+                        <div className={classes.selectorContainer}>
+                            <div>Select issues by filter:</div>
+                            <select className={classes.selector} onChange={selectorChangeHandler}>
+                                <option value="DEFAULT">Default Filter</option>
+                                <option value="BY_TYPES">Filter by issue's type</option>
+                                <option value="BY_PRIORITY">Filter by priority and status</option>
+                                <option value="BY_STATUS">Filter by status</option>
+                            </select>
+                        </div>
+                        <SwitchTables
+                            filter={currentFilter}
+                            sortDefaultFunction={sortStateByTypeAndStatus}
+                            sortByTypesFunction={sortStateByType}
+                            sortStateByStatus={sortStateByStatus}
+                            user={user}
+                            type={type}
+                            status={status}
+
+                        />
+                    </div>
                 </div>
-                <div className={classes.selectorContainer}>
-                    <select className={classes.selector} onChange={selectorChangeHandler}>
-                        <option value="DEFAULT">Default Filter</option>
-                        <option value="BY_TYPES">Filter by issue's type</option>
-                        <option value="BY_STATUS">Filter by status</option>
-                    </select>
-                </div>
-                <SwitchTables
-                    filter={currentFilter}
-                    sortDefaultFunction={sortStateByTypeAndStatus}
-                    sortByTypesFunction={sortStateByType}
-                    sortStateByStatus={sortStateByStatus}
-                    user={user}
-                    type={type}
-                    status={status}/>
-            </div>
-        </div>
+
     )
 }
 

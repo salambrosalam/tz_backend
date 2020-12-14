@@ -1,11 +1,22 @@
+.redSquare{
+    background-color: red;
+    height: 37px;
+    width: 22px;
+}
+.yellowSquare{
+    background-color: yellow;
+    height: 37px;
+    width: 22px;
+}
 .square{
-    height: 40px;
-    width: 20px;
+    background-color: white;
+    height: 37px;
+    width: 22px;
 }
 table{
     text-align: center;
     margin: 0 auto;
 }
 a{
-    color: white;
+    color: blue;
 }

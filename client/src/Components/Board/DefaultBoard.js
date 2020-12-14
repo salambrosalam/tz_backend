@@ -1,9 +1,14 @@
 import React from "react";
 import classes from "./Board.module.css";
 import BoardElement from "../BoardElement/BoardElement";
-import bugIcon from "../../Assets/bug.png";
-import storyIcon from "../../Assets/story.jpg";
-import epicIcon from "../../Assets/epic.png";
+import bugIcon from "../../Assets/bug.svg";
+import storyIcon from "../../Assets/story.svg";
+import epicIcon from "../../Assets/epic.svg";
+import high from "../../Assets/high.svg";
+import highest from "../../Assets/highest.svg";
+import medium from "../../Assets/medium.svg";
+import low from "../../Assets/low.svg";
+import lowest from "../../Assets/lowest.svg";
 
 const DefaultBoard = (props) => {
     return (
@@ -16,7 +21,40 @@ const DefaultBoard = (props) => {
                     <th>In Progress</th>
                     <th>Selected for development</th>
                 </tr>
-
+                <tr >
+                    <tr className={classes.typesWrapper}>
+                        <span className={classes.firstColumn}>Assignee</span>
+                        <span className={classes.secondColumn}>Type</span>
+                    </tr>
+                    <th>
+                        <img className={classes.arrowImgWrapper} src={highest}/>
+                        <img className={classes.arrowImgWrapper} src={high}/>
+                        <img className={classes.arrowImgWrapper} src={medium}/>
+                        <img className={classes.arrowImgWrapper} src={low}/>
+                        <img className={classes.arrowImgWrapper} src={lowest}/>
+                    </th>
+                    <th>
+                        <img className={classes.arrowImgWrapper} src={highest}/>
+                        <img className={classes.arrowImgWrapper} src={high}/>
+                        <img className={classes.arrowImgWrapper} src={medium}/>
+                        <img className={classes.arrowImgWrapper} src={low}/>
+                        <img className={classes.arrowImgWrapper} src={lowest}/>
+                    </th>
+                    <th>
+                        <img className={classes.arrowImgWrapper} src={highest}/>
+                        <img className={classes.arrowImgWrapper} src={high}/>
+                        <img className={classes.arrowImgWrapper} src={medium}/>
+                        <img className={classes.arrowImgWrapper} src={low}/>
+                        <img className={classes.arrowImgWrapper} src={lowest}/>
+                    </th>
+                    <th>
+                        <img className={classes.arrowImgWrapper} src={highest}/>
+                        <img className={classes.arrowImgWrapper} src={high}/>
+                        <img className={classes.arrowImgWrapper} src={medium}/>
+                        <img className={classes.arrowImgWrapper} src={low}/>
+                        <img className={classes.arrowImgWrapper} src={lowest}/>
+                    </th>
+                </tr>
                 <tr>
                     <tr>
                         <td className={classes.assignee}>romashkin1273@gmail.com</td>

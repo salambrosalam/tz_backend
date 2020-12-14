@@ -1,9 +1,9 @@
 import React from "react";
 import classes from "./Board.module.css";
 import BoardElement from "../BoardElement/BoardElement";
-import bugIcon from "../../Assets/bug.png";
-import storyIcon from "../../Assets/story.jpg";
-import epicIcon from "../../Assets/epic.png";
+import bugIcon from "../../Assets/bug.svg";
+import storyIcon from "../../Assets/story.svg";
+import epicIcon from "../../Assets/epic.svg";
 
 
 const TypeBoard = (props) => {

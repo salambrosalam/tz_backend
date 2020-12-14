@@ -1,11 +1,11 @@
 .board{
     display: flex;
     flex-direction: column;
-    background-color: #282c34;
+    background-color: white;
     max-width: 900px;
     border: none;
     margin:50px auto;
-    color: white;
+    color: black;
 }
 
 .firstColumn{
@@ -13,7 +13,7 @@
     /*height: 30px;*/
     width: 202px;
     text-align: center;
-    border-collapse: separate; /*убираем пустые промежутки между ячейками*/
+    border-collapse: collapse; /*убираем пустые промежутки между ячейками*/
     border: 1px solid grey;
 }
 .secondColumn{
@@ -30,12 +30,11 @@
 }
 
 table tr th{
-    border-collapse: separate; /*убираем пустые промежутки между ячейками*/
     border: 1px solid grey;
     word-break: break-word;
+    border-collapse: separate; /*убираем пустые промежутки между ячейками*/
 }
 table tr td{
-    border-collapse: separate; /*убираем пустые промежутки между ячейками*/
     border: 1px solid grey;
     word-wrap:break-word;
     height: 180px;
@@ -50,6 +49,7 @@ table tr td{
 }
 th{
     max-width: 100px;
+    border: 1px solid grey;
 }
 .typesWrapper{
     display: flex;
@@ -59,5 +59,8 @@ th{
 .boardElementWrapper {
     text-align: center;
     align-items: center;
+}
+table{
+    border-collapse: collapse;
 }
 

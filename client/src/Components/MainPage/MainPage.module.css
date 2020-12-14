@@ -1,5 +1,5 @@
 .basic{
-    background-image: url("../../Assets/bg_login.png");
+    background-color: white;
     padding: 30px;
     height: 100vh;
 }
@@ -18,21 +18,27 @@
 }
 .titleText{
     font-size: 30px;
-    color: white;
+    color: black;
 }
 /* Selector */
 
 .selectorContainer{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     padding-top: 50px;
+    color: midnightblue;
 }
 
 .selector{
-    width: 700px;
+    margin-left: 5px;
+    width: 400px;
     height: 40px;
     cursor: pointer;
+    background-color: lightgrey;
+    border-radius: 5px;
+    text-align-last: center;
+    color: midnightblue;
 }
 

@@ -16,15 +16,15 @@ router.get("/",async (req,res) => {
                 'Accept': 'application/json'
             }
         })
-           .then(response => {
-               console.log(
-                   `Response: ${response.status} ${response.statusText}`
-               );
-               return response.json();
-           })
-           .then(text => {console.log(text)
-           res.json(text)})
-           .catch(err => console.error(err));
+            .then(response => {
+                console.log(
+                    `Response: ${response.status} ${response.statusText}`
+                );
+                return response.json();
+            })
+            .then(text => {console.log("all tasks",text)
+                res.json(text)})
+            .catch(err => console.error(err));
     }catch(e){
         res.status(500).json({message: "Something is went wrong, try again"})
     }
