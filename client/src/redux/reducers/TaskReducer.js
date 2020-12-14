@@ -58,7 +58,7 @@ export const toggleFetchingAC = fetching => {
 export const getTaskTC = () => async dispatch => {
     try{
         dispatch(toggleFetchingAC(true))
-        const response = await axios.get("http://18.216.100.81:5000/api/tasks/")
+        const response = await axios.get("https://18.216.100.81:5000/api/tasks/")
         dispatch(getTaskAC(response.data));
     } catch (e){
         console.log(e)
@@ -72,7 +72,7 @@ export const getSortedTasksTC = (tasks) => dispatch => {
 
 export const changeStatusTC = () => async dispatch => {
     try{
-        const response = await axios.get("http://18.216.100.81:5000/api/database/")
+        const response = await axios.get("https://18.216.100.81:5000/api/database/")
     }catch(e){
         console.log(e)
     }
