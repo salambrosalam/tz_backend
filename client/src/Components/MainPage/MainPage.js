@@ -5,14 +5,23 @@ import classes from "./MainPage.module.css";
 import SwitchTables from "../Board/SwitchTables";
 import Loader from "../Loader/Loader";
 
+//Основной компонент(контейнерный) приложения
+
 const MainPage = props => {
+
+    //Все хуки
+    //useDispatch() => достаем диспатч для работы с редаксом
     const dispatch = useDispatch();
+    //useSelector() => Достаем из редакса состояние подгрузки тасков
     const isFetching = useSelector(state => state.task.isFetching)
+    //useState() => Работаем с локальным стейтом для обработки разных локальных событий(смена фильтра, юзера...)
     const [currentFilter, setCurrentFilter] = useState("DEFAULT");
     const [user,setUser] = useState("");
     const [type,setType] = useState("");
     const [status,setStatus] = useState("");
 
+    //В "taskState" сортируем данные(по юзеру и типу) полученные с сервера
+    //и формируем новый объект
     const taskState = useSelector(state => {
         if (!state.task?.tasks) return null;
         const usersSet = new Set();
@@ -74,6 +83,7 @@ const MainPage = props => {
         return res;
     });
 
+    //Функция для подсчета количества заданий по ТИПУ и СТАТУСУ
     const sortStateByTypeAndStatus = (user,type,status) => {
         let totalCount = 0;
         let total = [];
@@ -95,6 +105,7 @@ const MainPage = props => {
        return {totalCount, total}
     }
 
+    //Функция для подсчета количества заданий по ТИПУ
     const sortStateByType = (user,type) => {
         let totalCount = 0;
         let total = [];
@@ -111,6 +122,7 @@ const MainPage = props => {
         return {totalCount, total}
     }
 
+    //Функция для подсчета количества заданий по СТАТУСУ
     const sortStateByStatus = (user,status) => {
         let totalCount = 0;
         let total = [];
@@ -141,18 +153,23 @@ const MainPage = props => {
         return {totalCount, total};
     }
 
+    //Обработчик селектора фильтров
     const selectorChangeHandler = (event) => {
         setCurrentFilter(event.target.value);
+        //Диспатчим запрос для логирования в базу
         dispatch(changeStatusTC());
     }
-
+    //Монтируем компонент
     useEffect( () => {
+        //получаем наши таски
         dispatch(getTaskTC());
     },[])
 
+    //Если идет получение то показывем загрузчик
     if(isFetching){
         return <Loader/>
     }
+    //Рисуем главный компонент(если загрузка закончилась)
     return (
                 <div className={classes.basic}>
                     <div>
@@ -165,6 +182,9 @@ const MainPage = props => {
                                 <option value="BY_STATUS">Filter by status</option>
                             </select>
                         </div>
+
+                        {/* Рисуем свитч из таблиц */}
+
                         <SwitchTables
                             filter={currentFilter}
                             sortDefaultFunction={sortStateByTypeAndStatus}

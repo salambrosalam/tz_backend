@@ -5,9 +5,13 @@ import {useRoutes} from "./Routes/routes";
 
 const App = () => {
 
+
+  //Достаем нашу маршрутизацию
   const routes = useRoutes();
+
   return (
       <BrowserRouter>
+          {/* Вставляем ее в приложение */}
         {routes}
       </BrowserRouter>
   );

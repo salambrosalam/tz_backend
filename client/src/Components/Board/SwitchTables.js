@@ -3,6 +3,10 @@ import DefaultBoard from "./DefaultBoard";
 import TypeBoard from "./TypeBoard";
 import StatusBoard from "./StatusBoard";
 
+//Возвращаем нужную таблицу в зависимости от выбранного фильтра
+//Значение фильтра получаем в "props.filter"
+//Передаем таблицам функции для сортировки и другие данные
+
 const SwitchTables = (props) => {
     switch(props.filter){
         case "DEFAULT":

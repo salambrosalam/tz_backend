@@ -10,9 +10,14 @@ import medium from "../../Assets/medium.svg";
 import low from "../../Assets/low.svg";
 import lowest from "../../Assets/lowest.svg";
 
+//Стандартная разметка таблицы
+
 const DefaultBoard = (props) => {
     return (
         <div className={classes.board}>
+
+            {/* Основа таблицы */}
+
             <table>
                 <tr>
                     <th className={classes.firstColumn}>Assignee Block</th>
@@ -64,6 +69,10 @@ const DefaultBoard = (props) => {
                             <img className={classes.imgWrapper} src={epicIcon}/>
                         </td>
                     </tr>
+
+                    {/* Элементы которые будут отрендерены  */}
+                    {/* Таблички с количеством тасков для каждого поля */}
+
                     <td ><BoardElement className={classes.boardElementWrapper}
                             BackLogBug={props.sortDefaultFunction("_PiXeL_ TV","bug","backlog")}
                             BackLogStory={props.sortDefaultFunction("_PiXeL_ TV","story","backlog")}
@@ -110,6 +119,9 @@ const DefaultBoard = (props) => {
                             <img className={classes.imgWrapper} src={epicIcon}/>
                         </td>
                     </tr>
+
+                    {/* Элементы которые будут отрендерены  */}
+
                     <td ><BoardElement className={classes.boardElementWrapper}
                                        BackLogBug={props.sortDefaultFunction("Serg Bro","bug","backlog")}
                                        BackLogStory={props.sortDefaultFunction("Serg Bro","story","backlog")}

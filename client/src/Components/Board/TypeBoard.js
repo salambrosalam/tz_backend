@@ -5,10 +5,14 @@ import bugIcon from "../../Assets/bug.svg";
 import storyIcon from "../../Assets/story.svg";
 import epicIcon from "../../Assets/epic.svg";
 
+//Разметка таблицы по фильтру "sort by types"
 
 const TypeBoard = (props) => {
     return (
         <div className={classes.board}>
+
+            {/* Основа таблицы */}
+
             <table>
                 <tr>
                     <th className={classes.firstColumn}>Assignee Block</th>
@@ -24,6 +28,9 @@ const TypeBoard = (props) => {
                             <img className={classes.imgWrapper} src={epicIcon}/>
                         </td>
                     </tr>
+
+                    {/* Элементы которые будут отрендерены  */}
+
                     <td ><BoardElement className={classes.boardElementWrapper}
                                        BackLogBug={props.sortByTypesFunction("_PiXeL_ TV","bug")}
                                        BackLogStory={props.sortByTypesFunction("_PiXeL_ TV","story")}
@@ -40,6 +47,9 @@ const TypeBoard = (props) => {
                             <img className={classes.imgWrapper} src={epicIcon}/>
                         </td>
                     </tr>
+
+                    {/* Элементы которые будут отрендерены  */}
+
                     <td ><BoardElement className={classes.boardElementWrapper}
                                        BackLogBug={props.sortByTypesFunction("Serg Bro","bug")}
                                        BackLogStory={props.sortByTypesFunction("Serg Bro","story")}

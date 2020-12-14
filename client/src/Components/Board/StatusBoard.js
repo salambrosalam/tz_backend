@@ -5,9 +5,14 @@ import bugIcon from "../../Assets/bug.svg";
 import storyIcon from "../../Assets/story.svg";
 import epicIcon from "../../Assets/epic.svg";
 
+//Разметка таблицы по фильтру "sort by status"
+
 const StatusBoard = (props) => {
     return (
         <div className={classes.board}>
+
+            {/* Основа таблицы */}
+
             <table>
                 <tr>
                     <th className={classes.firstColumn}>Assignee Block</th>
@@ -26,6 +31,8 @@ const StatusBoard = (props) => {
                             <img className={classes.imgWrapper} src={epicIcon}/>
                         </td>
                     </tr>
+
+                    {/* Элементы которые будут отрендерены  */}
 
                     <td className={classes.boardElementWrapper}><BoardElement
                         filterType={props.filter}
@@ -53,6 +60,9 @@ const StatusBoard = (props) => {
                             <img className={classes.imgWrapper} src={epicIcon}/>
                         </td>
                     </tr>
+
+                    {/* Элементы которые будут отрендерены  */}
+
                     <td className={classes.boardElementWrapper}><BoardElement
                         filterType={props.filter}
                         BackLogBug={props.sortStateByStatus("Serg Bro","backlog")}
