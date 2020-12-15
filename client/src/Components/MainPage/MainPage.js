@@ -172,6 +172,12 @@ const MainPage = props => {
     //Рисуем главный компонент(если загрузка закончилась)
     return (
                 <div className={classes.basic}>
+                    <div className={classes.titleText}>
+                        <div>Перед использованием приложения, пожалуйста авторизуйтесь на atlassian.net, так как задачи на Jira Cloud(после клика по задаче) могут видеть только авторизованные пользователи</div>
+                        <div>Ссылка на логин здесь
+                            <a href="https://id.atlassian.com/login">Login here</a>
+                        </div>
+                    </div>
                     <div>
                         <div className={classes.selectorContainer}>
                             <div>Select issues by filter:</div>
@@ -196,6 +202,7 @@ const MainPage = props => {
 
                         />
                     </div>
+
                 </div>
 
     )
