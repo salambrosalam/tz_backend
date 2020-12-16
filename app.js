@@ -17,8 +17,9 @@ const PORT =config.get("PORT") || 5000
 
 //Конфигурация сертификата
 const httpsOptions = {
-    cert: fs.readFileSync( "cert.pem"),
-    key: fs.readFileSync("key.pem")
+    //PATH certificates
+    cert: fs.readFileSync( "./cert.key"),
+    key: fs.readFileSync("./key.crt")
 }
 
 //Сам сервер
