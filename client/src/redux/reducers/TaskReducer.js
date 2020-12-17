@@ -54,7 +54,7 @@ export const getTaskTC = () => async dispatch => {
         //начинаем загрузку тасков
         dispatch(toggleFetchingAC(true))
         //записываем в "response" ответ с сервера
-        const response = await axios.get("https://18.216.100.81:443/api/tasks/")
+        const response = await axios.get("https://18.216.100.81:5000/api/tasks/")
         //передаем response.data
         dispatch(getTaskAC(response.data));
     } catch (e){
@@ -68,7 +68,7 @@ export const getTaskTC = () => async dispatch => {
 export const changeStatusTC = () => async dispatch => {
     try{
         //делаем запрос
-        const response = await axios.get("https://18.216.100.81:443/api/database/")
+        const response = await axios.get("https://18.216.100.81:5000/api/database/")
     }catch(e){
         console.log(e)
     }
