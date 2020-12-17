@@ -13,7 +13,7 @@ app.use(express.json({extended: true}))
 app.use("/api/tasks",require("./routes/task.routes"));
 app.use("/api/database",require("./routes/db.routes"));
 
-const PORT =config.get("PORT") || 5000
+const PORT =config.get("PORT") || 443
 
 //Конфигурация сертификата
 const httpsOptions = {
