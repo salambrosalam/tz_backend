@@ -32,32 +32,32 @@ const DefaultBoard = (props) => {
                         <span className={classes.secondColumn}>Type</span>
                     </tr>
                     <th>
-                        <img className={classes.arrowImgWrapper} src={highest}/>
-                        <img className={classes.arrowImgWrapper} src={high}/>
-                        <img className={classes.arrowImgWrapper} src={medium}/>
-                        <img className={classes.arrowImgWrapper} src={low}/>
                         <img className={classes.arrowImgWrapper} src={lowest}/>
+                        <img className={classes.arrowImgWrapper} src={low}/>
+                        <img className={classes.arrowImgWrapper} src={medium}/>
+                        <img className={classes.arrowImgWrapper} src={high}/>
+                        <img className={classes.arrowImgWrapper} src={highest}/>
                     </th>
                     <th>
-                        <img className={classes.arrowImgWrapper} src={highest}/>
-                        <img className={classes.arrowImgWrapper} src={high}/>
-                        <img className={classes.arrowImgWrapper} src={medium}/>
-                        <img className={classes.arrowImgWrapper} src={low}/>
                         <img className={classes.arrowImgWrapper} src={lowest}/>
+                        <img className={classes.arrowImgWrapper} src={low}/>
+                        <img className={classes.arrowImgWrapper} src={medium}/>
+                        <img className={classes.arrowImgWrapper} src={high}/>
+                        <img className={classes.arrowImgWrapper} src={highest}/>
                     </th>
                     <th>
-                        <img className={classes.arrowImgWrapper} src={highest}/>
-                        <img className={classes.arrowImgWrapper} src={high}/>
-                        <img className={classes.arrowImgWrapper} src={medium}/>
-                        <img className={classes.arrowImgWrapper} src={low}/>
                         <img className={classes.arrowImgWrapper} src={lowest}/>
+                        <img className={classes.arrowImgWrapper} src={low}/>
+                        <img className={classes.arrowImgWrapper} src={medium}/>
+                        <img className={classes.arrowImgWrapper} src={high}/>
+                        <img className={classes.arrowImgWrapper} src={highest}/>
                     </th>
                     <th>
-                        <img className={classes.arrowImgWrapper} src={highest}/>
-                        <img className={classes.arrowImgWrapper} src={high}/>
-                        <img className={classes.arrowImgWrapper} src={medium}/>
-                        <img className={classes.arrowImgWrapper} src={low}/>
                         <img className={classes.arrowImgWrapper} src={lowest}/>
+                        <img className={classes.arrowImgWrapper} src={low}/>
+                        <img className={classes.arrowImgWrapper} src={medium}/>
+                        <img className={classes.arrowImgWrapper} src={high}/>
+                        <img className={classes.arrowImgWrapper} src={highest}/>
                     </th>
                 </tr>
                 <tr>
